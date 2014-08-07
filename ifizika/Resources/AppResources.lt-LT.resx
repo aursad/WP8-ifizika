@@ -122,30 +122,29 @@
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
+    <value>lt-LT</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
     <value>iFizika</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
-    <value>add</value>
+    <value>Pridėti</value>
+    <comment>Pri</comment>
   </data>
   <data name="AppBarMenuItemText" xml:space="preserve">
-    <value>Menu Item</value>
+    <value>Meniu laukas</value>
   </data>
   <data name="LoadingData" xml:space="preserve">
-    <value>Loading data...</value>
-    <comment>Loading data text in progress bar</comment>
+    <value>Kraunasi duomenys...</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
-    <comment>Contants information</comment>
+    <value>Kontaktai</value>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>Feedback</value>
+    <value>Atsiliepimai</value>
   </data>
   <data name="About" xml:space="preserve">
-    <value>About</value>
+    <value>Apie</value>
   </data>
 </root>

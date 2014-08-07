@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using ifizika.Models;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using ifizika.Resources;
@@ -12,6 +14,31 @@ namespace ifizika
 {
     public partial class App : Application
     {
+        private static ClassesViewModel _viewModel = null;
+        private static ThemesViewModel _themesViewModel = null;
+        public const string SecurityKey = "fb08e0e726dee861a3fc6375d142a3f3";
+        /// <summary>
+        /// A static ViewModel used by the views to bind against.
+        /// </summary>
+        /// <returns>The MainViewModel object.</returns>
+        public static ClassesViewModel ViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                return _viewModel ?? (_viewModel = new ClassesViewModel());
+            }
+        }
+
+        public static ThemesViewModel ThemesViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                return _themesViewModel ?? (_themesViewModel = new ThemesViewModel());
+            }
+        }
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
