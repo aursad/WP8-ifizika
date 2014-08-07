@@ -9,19 +9,19 @@ using Newtonsoft.Json;
 
 namespace ifizika.Models
 {
-    public class ClassesViewModel : INotifyPropertyChanged
+    public class PostViewModel : INotifyPropertyChanged
     {
-        const string ApiUrl = @"http://api.ifizika.info/v1/class";
+        const string ApiUrl = @"http://api.ifizika.info/v1/post";
 
-        public ClassesViewModel()
+        public PostViewModel()
         {
-            this.Items = new ObservableCollection<ClassModel>();
+            this.Items = new ObservableCollection<PostModel>();
         }
 
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
-        public ObservableCollection<ClassModel> Items { get; private set; }
+        public ObservableCollection<PostModel> Items { get; private set; }
 
         public bool IsDataLoaded
         {
@@ -32,7 +32,7 @@ namespace ifizika.Models
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
-        public void LoadData()
+        public void LoadData(string idPost)
         {
             if (this.IsDataLoaded == false)
             {
@@ -41,9 +41,12 @@ namespace ifizika.Models
                 var webClient = new WebClient();
                 webClient.Headers["Accept"] = "application/json";
                 webClient.Headers["Securitykey"] = App.SecurityKey;
-                webClient.DownloadStringCompleted += webClient_DownloadCatalogCompleted;
-                webClient.DownloadStringAsync(new Uri(ApiUrl));
+                webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadCatalogCompleted);
+
+                string url = string.Format("{0}/{1}", ApiUrl, idPost);
+                webClient.DownloadStringAsync(new Uri(url));
             }
+            this.IsDataLoaded = false;
         }
 
         private void webClient_DownloadCatalogCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -53,12 +56,8 @@ namespace ifizika.Models
                 this.Items.Clear();
                 if (e.Result != null)
                 {
-                    var books = JsonConvert.DeserializeObject<ClassViewModel>(e.Result);
-
-                    foreach (ClassModel classObject in books.Classes)
-                    {
-                        this.Items.Add(classObject);
-                    }
+                    var books = JsonConvert.DeserializeObject<PostModel>(e.Result);
+                    this.Items.Add(books);
                     NotifyPropertyChanged("Items");
                     SystemTray.ProgressIndicator.IsVisible = false; 
                 }

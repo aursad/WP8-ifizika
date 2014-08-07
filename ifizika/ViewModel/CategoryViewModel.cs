@@ -2,13 +2,13 @@
 
 namespace ifizika.ViewModel
 {
-    public class ThemeViewModel
+    public class CategoryViewModel
     {
         public string Error { get; set; }
-        public List<ThemeModel> Themes { get; set; }
+        public List<CategoryModel> Categories { get; set; } 
     }
 
-    public class ThemeModel
+    public class CategoryModel
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -70,6 +70,24 @@ namespace ifizika.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This annual project is to create a program, in this case a web page, which the student can easily find information on the subject of physics, structured information contained in the videos, formulas tasks..
+        /// </summary>
+        public static string About_Text {
+            get {
+                return ResourceManager.GetString("About_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That&apos;s what we want to tell you....
+        /// </summary>
+        public static string About_Title {
+            get {
+                return ResourceManager.GetString("About_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
         public static string AppBarButtonText {
@@ -138,6 +156,15 @@ namespace ifizika.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version: .
+        /// </summary>
+        public static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
             }
         }
     }

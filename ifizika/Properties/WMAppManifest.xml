@@ -5,7 +5,7 @@
     <Language code="lt-LT" />
     <Language code="en" />
   </Languages>
-  <App xmlns="" ProductID="{3123da90-0e56-4ea5-8319-80e7d55fc666}" Title="iFizika" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Aurimas Sadauskas" Description="iFizika application for elementary schoold students in Lithuania" Publisher="aurimas.sadauskas" PublisherID="{fe451499-19ed-48aa-8c31-ae1df7e1ed2b}">
+  <App xmlns="" ProductID="{3123da90-0e56-4ea5-8319-80e7d55fc666}" Title="iFizika" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Aurimas Sadauskas" Description="iFizika application for elementary schoold students in Lithuania" Publisher="aurimas.sadauskas" PublisherID="{f075665e-3d70-4a6d-96a3-f8e6e282d491}">
     <IconPath IsRelative="true" IsResource="false">favs.addto.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

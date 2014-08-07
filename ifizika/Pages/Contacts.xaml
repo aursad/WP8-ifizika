@@ -39,8 +39,12 @@
             <!--Pivot item two-->
             <phone:PivotItem Header="{Binding LocalizedResources.About, Source={StaticResource LocalizedStrings}}">
                 <Grid>
-                    <TextBlock>Tekstas</TextBlock>
-                    </Grid>
+                    <StackPanel>
+                        <TextBlock Text="{Binding LocalizedResources.About_Title, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" FontSize="36" Margin="12,0,12,0"/>
+                        <TextBlock Text="{Binding LocalizedResources.About_Text, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" FontSize="24" Margin="12,12,12,0"/>
+                    </StackPanel>
+                    <Button Name="Version" Content="Version" Margin="0,0,0,0" VerticalAlignment="Bottom" IsEnabled="False"/>
+                </Grid>
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>

@@ -147,4 +147,13 @@
   <data name="About" xml:space="preserve">
     <value>Apie</value>
   </data>
+  <data name="About_Text" xml:space="preserve">
+    <value>Šio metinio projekto tikslas sukurti programą, šiuo atveju tinklalapį, kuriame mokinys lengvai gali rasti informaciją fizikos tema, susistemintą informaciją, pateikiamus vaizdo įrašus, formules, uždavinius.</value>
+  </data>
+  <data name="About_Title" xml:space="preserve">
+    <value>Štai ką mes norime tau papasakoti...</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versija: </value>
+  </data>
 </root>

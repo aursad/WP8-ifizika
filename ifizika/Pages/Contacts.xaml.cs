@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Windows;
-using Microsoft.Phone.Controls;
+using ifizika.Resources;
 using Microsoft.Phone.Tasks;
 
 namespace ifizika.Pages
 {
-    public partial class Contacts : PhoneApplicationPage
+    public partial class Contacts
     {
         public Contacts()
         {
             InitializeComponent();
+
+            Version.Content = string.Format("{0} {1}", AppResources.Version, App.GetVersion());
         }
 
         private void Go_To_Page(object sender, RoutedEventArgs e)

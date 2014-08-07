@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using ifizika.Resources;
 using Microsoft.Phone.Controls;
@@ -7,13 +6,14 @@ using Microsoft.Phone.Shell;
 
 namespace ifizika.Pages
 {
-    public partial class Page1 : PhoneApplicationPage
+    public partial class Details : PhoneApplicationPage
     {
-        public string IdTheme;
+        public string IdPost;
 
-        public Page1()
+        public Details()
         {
             InitializeComponent();
+            App.PostViewModel.Items.Clear();
         }
 
         // When page is navigated to set data context to selected item in list
@@ -22,12 +22,13 @@ namespace ifizika.Pages
             base.OnNavigatedTo(e);
 
             string selectedIndex = "";
-            if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+            if (NavigationContext.QueryString.TryGetValue("id", out selectedIndex))
             {
-                IdTheme = selectedIndex;
-                string themeName = "";
-                NavigationContext.QueryString.TryGetValue("name", out themeName);
-                ThemeName.Text = themeName;
+                IdPost = selectedIndex;
+                string detailsName = "";
+                NavigationContext.QueryString.TryGetValue("name", out detailsName);
+                Name.Text = detailsName;
+
                 var prog = new ProgressIndicator
                 {
                     IsVisible = true,
@@ -36,23 +37,14 @@ namespace ifizika.Pages
                 };
                 SystemTray.SetProgressIndicator(this, prog);
 
-                List.DataContext = App.ThemesViewModel.Items;
+                List.DataContext = App.PostViewModel.Items;
                 this.Loaded += DataLoaded;
             }
         }
 
-        // Handle selection changed on ListBox
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MessageBox.Show("Clicked link with ID: " + List.SelectedIndex);
-        }
-
         private void DataLoaded(object sender, RoutedEventArgs e)
         {
-            if (!App.ThemesViewModel.IsDataLoaded)
-            {
-                App.ThemesViewModel.LoadData(IdTheme);
-            }
+            App.PostViewModel.LoadData(IdPost);
         }
     }
 }

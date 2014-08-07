@@ -40,10 +40,7 @@ namespace ifizika
         private void BuildLocalizedApplicationBar()
         {
             // Set the page's ApplicationBar to a new instance of ApplicationBar.
-            ApplicationBar = new ApplicationBar
-            {
-                Mode = ApplicationBarMode.Minimized
-            };
+            ApplicationBar = new ApplicationBar();
 
             // Create a new button and set the text value to the localized string from AppResources.
             //var appBarButton =
