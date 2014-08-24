@@ -6,6 +6,7 @@ using ifizika.Resources;
 using ifizika.ViewModel;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 
 namespace ifizika
 {
@@ -32,7 +33,7 @@ namespace ifizika
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-           
+
             ClassList.DataContext = App.ViewModel.Items;
             this.Loaded += DataLoaded;
         }
@@ -45,22 +46,17 @@ namespace ifizika
                 Mode = ApplicationBarMode.Minimized
             };
 
-            // Create a new button and set the text value to the localized string from AppResources.
-            //var appBarButton =
-            //    new ApplicationBarIconButton(new Uri("/Assets/Images/refresh.png", UriKind.Relative))
-            //    {
-            //        Text = "Refresh"
-            //    };
-            //ApplicationBar.Buttons.Add(appBarButton);
-
             // Create a new menu item with the localized string from AppResources.
             var appBarMenuItemContacts = new ApplicationBarMenuItem(AppResources.Contacts);
             appBarMenuItemContacts.Click += Contacts;
             var appBarMenuItemFeedback = new ApplicationBarMenuItem(AppResources.Feedback);
             appBarMenuItemFeedback.Click += Feedback;
+            var appBarMenuItemSettings = new ApplicationBarMenuItem(AppResources.Settings);
+            appBarMenuItemSettings.Click += SettingsMenu;
 
             ApplicationBar.MenuItems.Add(appBarMenuItemContacts);
             ApplicationBar.MenuItems.Add(appBarMenuItemFeedback);
+            ApplicationBar.MenuItems.Add(appBarMenuItemSettings);
         }
 
         private void DataLoaded(object sender, RoutedEventArgs e)
@@ -101,7 +97,14 @@ namespace ifizika
 
         private void Feedback(object sender, EventArgs e)
         {
-            MessageBox.Show("Feedback button works!");
+            var marketplaceReviewTask = new MarketplaceReviewTask();
+
+            marketplaceReviewTask.Show();
+        }
+
+        private void SettingsMenu(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Settings.xaml", UriKind.Relative));
         }
     }
 }

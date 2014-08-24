@@ -15,13 +15,13 @@ namespace ifizika.Models
 
         public PostViewModel()
         {
-            this.Items = new ObservableCollection<PostModel>();
+            this.Item = new PostModel();
         }
 
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
-        public ObservableCollection<PostModel> Items { get; private set; }
+        public PostModel Item { get; private set; }
 
         public bool IsDataLoaded
         {
@@ -36,8 +36,6 @@ namespace ifizika.Models
         {
             if (this.IsDataLoaded == false)
             {
-                this.Items.Clear();
-                
                 var webClient = new WebClient();
                 webClient.Headers["Accept"] = "application/json";
                 webClient.Headers["Securitykey"] = App.SecurityKey;
@@ -53,12 +51,11 @@ namespace ifizika.Models
         {
             try
             {
-                this.Items.Clear();
                 if (e.Result != null)
                 {
                     var books = JsonConvert.DeserializeObject<PostModel>(e.Result);
-                    this.Items.Add(books);
-                    NotifyPropertyChanged("Items");
+                    Item = books;
+                    NotifyPropertyChanged("Item");
                     SystemTray.ProgressIndicator.IsVisible = false; 
                 }
             }

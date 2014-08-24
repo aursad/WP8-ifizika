@@ -1,0 +1,107 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Navigation;
+using ifizika.Models;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
+
+namespace ifizika.Pages
+{
+    public partial class Settings : PhoneApplicationPage
+    {
+        private readonly string[] _colorList = new string[]
+        {
+            "Black", "White"
+        };
+        private AppSettings settings = new AppSettings();
+
+        public Settings()
+        {
+            InitializeComponent();
+            InitializeMenuBar();
+            ListPicker.ItemsSource = _colorList;
+            ListPicker.SelectedIndex = selectedColorSwitch(settings.ColorSetting);
+        }
+
+
+        private void InitializeMenuBar()
+        {
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.IsMenuEnabled = true;
+            ApplicationBar.IsVisible = true;
+            ApplicationBar.Opacity = 1.0;
+
+            ApplicationBarIconButton doneButton = new ApplicationBarIconButton(new Uri("/Assets/Images/check.png", UriKind.Relative));
+            doneButton.Text = "Atlikta";
+            doneButton.Click += doneButton_Click;
+
+            ApplicationBarIconButton cancelButton = new ApplicationBarIconButton(new Uri("/Assets/Images/close.png", UriKind.Relative));
+            cancelButton.Text = "Atšaukti";
+            cancelButton.Click += cancelButton_Click;
+
+            ApplicationBar.Buttons.Add(doneButton);
+            ApplicationBar.Buttons.Add(cancelButton);
+        }
+
+        /// <summary> 
+        /// Done button clicked event handler 
+        /// </summary> 
+        /// <param name="sender"></param> 
+        /// <param name="e"></param> 
+        void doneButton_Click(object sender, EventArgs e)
+        {
+            var selectedColor = ListPicker.SelectedItem.ToString();
+            settings.ColorSetting = listPickerSwitch(selectedColor);
+            NavigationService.GoBack();
+        }
+        /// <summary> 
+        /// Cancel button clicked event handler 
+        /// </summary> 
+        /// <param name="sender"></param> 
+        /// <param name="e"></param> 
+        void cancelButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private Color listPickerSwitch(string color)
+        {
+            Color tempColor;
+            switch (color)
+            {
+                case "Black":
+                    tempColor = Colors.Black;
+                    break;
+                case "White":
+                    tempColor = Colors.White;
+                    break;
+                default:
+                    tempColor = Colors.Black;
+                    break;
+            }
+            return tempColor;
+        }
+        private int selectedColorSwitch(Color color)
+        {
+            int tempColor;
+            switch (color.ToString())
+            {
+                case "#FFFFFF":
+                    tempColor = Array.IndexOf(_colorList, "Black");
+                    break;
+                case "#000000":
+                    tempColor = Array.IndexOf(_colorList, "White");
+                    break;
+                default:
+                    tempColor = Array.IndexOf(_colorList, "Black");
+                    break;
+            }
+            return tempColor;
+        }
+    }
+}

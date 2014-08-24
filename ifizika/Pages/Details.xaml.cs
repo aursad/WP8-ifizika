@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Navigation;
 using ifizika.Resources;
 using Microsoft.Phone.Controls;
@@ -13,7 +14,6 @@ namespace ifizika.Pages
         public Details()
         {
             InitializeComponent();
-            App.PostViewModel.Items.Clear();
         }
 
         // When page is navigated to set data context to selected item in list
@@ -37,14 +37,16 @@ namespace ifizika.Pages
                 };
                 SystemTray.SetProgressIndicator(this, prog);
 
-                List.DataContext = App.PostViewModel.Items;
-                this.Loaded += DataLoaded;
+                this.DataContext = App.PostViewModel.Item;
+                //TextBlock.DataContext = App.PostViewModel.Item;
+                Loaded += DataLoaded;
             }
         }
 
         private void DataLoaded(object sender, RoutedEventArgs e)
         {
             App.PostViewModel.LoadData(IdPost);
+            TextBlock.Text = App.PostViewModel.Item.Text;
         }
     }
 }

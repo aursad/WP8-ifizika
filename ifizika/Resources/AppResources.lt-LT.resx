@@ -156,4 +156,7 @@
   <data name="Version" xml:space="preserve">
     <value>Versija: </value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Nustatymai</value>
+  </data>
 </root>

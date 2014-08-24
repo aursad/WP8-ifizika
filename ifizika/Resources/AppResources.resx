@@ -157,4 +157,8 @@
   <data name="Version" xml:space="preserve">
     <value>Version: </value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Settings translation in app bar</comment>
+  </data>
 </root>
